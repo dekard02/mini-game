@@ -84,7 +84,7 @@ function createBoard(){
         theCard.setAttribute('data-id',index);
         theCard.appendChild(frontCard);
         theCard.appendChild(backCard);
-        theCard.addEventListener('click',flipCard)
+        theCard.addEventListener('click',flipCard);
 
         grid.appendChild(theCard);
     })
@@ -99,6 +99,7 @@ let button = document.getElementById('again');
 
 function flipCard(){
     this.style.transform = "rotateY(180deg)";
+    this.removeEventListener("click",flipCard);
 
     const id = this.getAttribute('data-id');
     cardsChossen.push(cardArray[id]);
@@ -114,7 +115,9 @@ function flipCard(){
                 pairWon++;
             } else {
                 cards[cardsChossenIds[0]].style.transform = "";
+                cards[cardsChossenIds[0]].addEventListener('click',flipCard);
                 cards[cardsChossenIds[1]].style.transform = "";
+                cards[cardsChossenIds[1]].addEventListener('click',flipCard);
             }
             cardsChossen = [];
             cardsChossenIds = [];
