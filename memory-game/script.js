@@ -125,6 +125,7 @@ function flipCard(){
             if(pairWon == cardArray.length/2){
                 result.innerHTML = "YOU WON!!!";
                 button.style.display = "flex";
+                document.getElementById('notice').style.display = "none";
             }
         },400)
     }
