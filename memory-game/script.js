@@ -98,7 +98,10 @@ let result = document.getElementById('result');
 let button = document.getElementById('again');
 
 function flipCard(){
+    const cards = document.querySelectorAll('div#thecard');
+
     this.style.transform = "rotateY(180deg)";
+    //remove event the card just flipped
     this.removeEventListener("click",flipCard);
 
     const id = this.getAttribute('data-id');
@@ -106,8 +109,9 @@ function flipCard(){
     cardsChossenIds.push(id);
 
     if(cardsChossen.length === 2 ){
+        //remove event all card
+        cards.forEach((elem) => elem.removeEventListener('click',flipCard));
         setTimeout(() => {
-            const cards = document.querySelectorAll('div#thecard');
             console.log(cardsChossen);
             if(cardsChossen[0].name === cardsChossen[1].name){
                 cards[cardsChossenIds[0]].style.transform = "scale(0)";
@@ -115,10 +119,10 @@ function flipCard(){
                 pairWon++;
             } else {
                 cards[cardsChossenIds[0]].style.transform = "";
-                cards[cardsChossenIds[0]].addEventListener('click',flipCard);
                 cards[cardsChossenIds[1]].style.transform = "";
-                cards[cardsChossenIds[1]].addEventListener('click',flipCard);
             }
+            //add event all card after 400ms
+            cards.forEach((elem) => elem.addEventListener('click',flipCard));
             cardsChossen = [];
             cardsChossenIds = [];
 

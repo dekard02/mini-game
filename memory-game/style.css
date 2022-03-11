@@ -1,5 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Bungee);
-
+@import url(../style-nav.css);
 #grid{
     width: 600px;
     height: 600px;
@@ -7,11 +7,6 @@
     flex-wrap: wrap;
     margin: auto;
 }
-/* #card-container{
-    position: relative;
-    width: 150px;
-    height: 150px;
-} */
 #thecard{
     width: 140px;
     height: 140px;
@@ -103,10 +98,4 @@
     text-align: center;
     margin: auto;
     font-family: 'Bungee';
-}
-
-#notice{
-  text-align: center;
-  display: block;
-  font-family: 'Arial';
 }

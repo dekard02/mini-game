@@ -5,9 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Doge</title>
+    <script src="http://www.w3schools.com/lib/w3data.js"></script>
+    <style>
+        @import url(../style-nav.css);
+    </style>
 </head>
 <body>
-    <canvas id="canvas" width="1200" height="700" style="background-color: cornflowerblue;"></canvas>
+    <div id="navbar" w3-include-html="../nav.html"></div>
+    <script>
+        w3IncludeHTML();
+    </script>
+    <div id="main">
+        <canvas id="canvas" width="1200" height="700" style="background-color: cornflowerblue;"></canvas>
+    </div>
     <script type="text/javascript">
         var canvas = document.getElementById('canvas');
         var ctx = canvas.getContext('2d');
