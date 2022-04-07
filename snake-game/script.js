@@ -130,41 +130,55 @@ function drawFood(status){
 }
 
 function startGame(){
-    document.onkeydown = function(event) {
-        let keyCode;
-        if(event == null)
-        {
-            keyCode = window.event.keyCode;
-        }
-        else
-        {
-            keyCode = window.event.keyCode;
-        }
-    
-        switch(keyCode)
-        {
-            // left
-            case 37:
-                if(direction == 'right') break;
-                direction = 'left';
-                break;
-            // up
-            case 38:
-                if(direction == 'down') break;
-                direction = 'up';
-                break;
-            // right
-            case 39:
-                if(direction == 'left') break;
-                direction = 'right';
-                break;
-            // down
-            case 40:
-                if(direction == 'up') break;
-                direction = 'down';
-                break;
-            default:
-                break;
+    function addEvent(){
+        document.onkeydown = function(event) {
+            let keyCode;
+            if(event == null)
+            {
+                keyCode = window.event.keyCode;
+            }
+            else
+            {
+                keyCode = window.event.keyCode;
+            }
+        
+            switch(keyCode)
+            {
+                // left
+                case 37:
+                    if(direction == 'right') break;
+                    direction = 'left';
+                    document.onkeydown = function(event) {
+                        return null;
+                    }           
+                    break;
+                // up
+                case 38:
+                    if(direction == 'down') break;
+                    direction = 'up';
+                    document.onkeydown = function(event) {
+                        return null;
+                    }            
+                    break;
+                // right
+                case 39:
+                    if(direction == 'left') break;
+                    direction = 'right';
+                    document.onkeydown = function(event) {
+                        return null;
+                    }            
+                    break;
+                // down
+                case 40:
+                    if(direction == 'up') break;
+                    direction = 'down';
+                    document.onkeydown = function(event) {
+                        return null;
+                    }            
+                    break;
+                default:
+                    break;
+            }
         }
     }
 
@@ -187,6 +201,7 @@ function startGame(){
 
     drawFood();
     let interval = setInterval(function(){
+        addEvent();
         moveSnake();
         if(isCrash()){
             clearInterval(interval);
